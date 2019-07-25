@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Course Result Management System</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+        <style type="text/css">
+            ul {
+                list-style: none;
+                padding: 0px;
+                margin: 0px;
+               
+                margin: 2px 0 0;
+                min-width: 160px;
+                padding: 5px 0;
+                top: 100%;
+                z-index: 1000;
+            }
+
+                ul li {
+                    display: block;
+                    position: relative;
+                    float: left;
+                    padding: 3px;
+                    
+                }
+
+                li ul {
+                    display: none;
+                }
+
+                ul li a {
+                    display: block;
+                    background: #000;
+                    padding: 5.5px 12px 5.5px 12px;
+                    text-decoration:none;
+                    white-space: nowrap;
+                    color: #fff;
+                }
+            li:hover a {
+                background: #2f3640;
+            }
+
+            li:hover li a:hover {
+                background: #0097e6;
+                color: white;
+            }
+
+
+                    ul li a:hover {
+                        
+                       
+                        color: #fff;
+                        -webkit-border-radius: 5px;
+                        -moz-border-radius: 5px;
+                         border-radius: 5px;
+                    }
+
+                li:hover ul {
+                    display: block;
+                    position: absolute;
+                }
+
+                li:hover li {
+                    float: none;
+                }
+
+           
+
+             .navbar .brand {
+                    display: block;
+                    float: left;
+                    padding: 5px;
+                    margin-left: -40px;
+                    font-size: 7px;
+                    font-weight: 100;
+                    color: white;
+                    text-shadow: 0 0px 0 #ffffff;
+                }
+
+
+
+        .navbar-text {
+            margin-bottom: 0;
+            line-height: 18px;
+            color: white;
+        }
+
+                #drop-nav li ul li {
+                    border-top: 0px;
+                }
+            #drop-nav li ul li a {
+               text-decoration:none;
+              
+            }
+            
+            </style>
+        </head>
+        <body>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @Html.ActionLink("UNIVERSITY MANAGMENT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul id="drop-nav" class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>
+                                <a href="#">Department</a>
+                                <ul>
+                                    <li>@Html.ActionLink("Department Entry", "Create", "Department")</li>
+                                    <li>@Html.ActionLink("View All Departments", "Index", "Department")</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Course Panel</a>
+                                <ul>
+                                    <li>@Html.ActionLink("Save Course", "Create", "Course")</li>
+                                    <li>@Html.ActionLink("View Course Statics", "ViewCourseStatus", "AssignCourse")</li>
+                                    <li>@Html.ActionLink("Unassign All Courses", "UnassignCourses", "Course")</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Teacher Panel</a>
+                                <ul>
+                                    <li>@Html.ActionLink("Save Teacher", "Create", "Teacher")</li>
+                                    <li>@Html.ActionLink("Course Assign to Teacher", "Save", "AssignCourse")</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Student Panel</a>
+                                <ul>
+                                    <li>@Html.ActionLink("Register Student", "Create", "Student")</li>
+                                    <li>@Html.ActionLink("Enroll In a Course", "Create", "EnrollCourse")</li>
+                                    <li>@Html.ActionLink("Save Student Result", "SaveResult", "EnrollCourse")</li>
+                                    <li>@Html.ActionLink("View Result", "ViewResult", "EnrollCourse")</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Class Schedule</a>
+                                <ul>
+                                    <li>@Html.ActionLink("Allocate Classroms", "Create", "RoomAllocation")</li>
+                                    <li>@Html.ActionLink("View Class Schedule and Room Allocation Information", "Index", "RoomAllocation")</li>
+                                    <li>@Html.ActionLink("Unallocate All Classrooms", "UnallocateRoom", "RoomAllocation")</li>
+                                </ul>
+                            </li>
+                            @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        </ul>
+                        @*@Html.Partial("_LoginPartial")*@
+                    </div>
+                </div>
+            </div>
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - University Course And Result Management System By ASP.NET-01</p>
+                </footer>
+            </div>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+        </body>
+        </html>
